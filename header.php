@@ -8,11 +8,14 @@
 </head>
 <div class="signin-block">
     <div class="container">
+        <?php //wp_login_form(); ?>
+        <form name="loginform" id="loginform" action="<?php echo site_url(); ?>/wp-login.php" method="post">
         <span>Sign in to your Account</span>
-        <input name="username" type="text" class="m-right" placeholder="Username" />
-        <input name="password" type="text" class="m-right" placeholder="Password" />
-        <a href="Main.html" class="m-right btnsignin" >Sign in</a>
-        <a class="m-right frd-link">Forgot Password?</a>
+        <input name="log" id="user_login" type="text" class="m-right" placeholder="Username" />
+        <input name="pwd" id="user_pass" type="password" class="m-right" placeholder="Password" />
+        <input type="submit" name="wp-submit" id="wp-submit" class="m-right btnsignin" value="Sign in">
+<!--        <a href="Main.html" class="m-right btnsignin" >Sign in</a>-->
+        <a class="m-right frd-link" href="http://localhost/wordpressfrmhtml/wp-login.php?action=lostpassword">Forgot Password?</a>
         <a class="signin-close"><i class="fa fa-close"></i></a>
     </div>
 </div>
@@ -41,7 +44,10 @@
                 </ul>
             </div>
             <div class="col-md-4 col-xs-12">
-                <div class="search-box"> <input type="text" class="search-txt-box" placeholder="Search"><button type="submit" class="search-btn"><i class="fa fa-search"></i></button></div>
+                <?php //get_search_form(); ?>
+                <form role="search" method="get" id="searchform" class="searchform" action="<?php echo home_url( '/' ); ?>">
+                <div class="search-box"> <input type="text" name="s" id="s" class="search-txt-box" placeholder="<?php the_search_query(); ?>"><button type="submit" id="searchsubmit" value="Search" class="search-btn"><i class="fa fa-search"></i></button></div>
+<!--                <div class="search-box"> <input type="text" class="search-txt-box" placeholder="Search"><button type="submit" class="search-btn"><i class="fa fa-search"></i></button></div>-->
             </div>
         </div>
     </div>

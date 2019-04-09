@@ -14,6 +14,11 @@ function bootstrapstarter_enqueue_scripts() {
     wp_enqueue_script('bootstrap', get_template_directory_uri().'/js/bootstrap.min.js', $dependencies, '3.3.6', true );
     wp_enqueue_script( 'jquery', get_stylesheet_directory_uri() . '/js/jquery.min.js');
     wp_enqueue_script( 'custom', get_stylesheet_directory_uri() . '/js/custom.js');
+    wp_localize_script( 'custom', 'frontend_ajax_object',
+        array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        )
+    );
 }
 
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
@@ -169,3 +174,15 @@ add_theme_support( 'custom-header', $args );
 
 // aad feature image to theme
 add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+
+
+function add_register(){
+    echo "hello";
+    $e=$_POST['em'];
+    $u=$_POST['unm'];
+    $p=$_POST['pwd'];
+    $result['type']='success';
+    wp_die();
+}
+add_action( 'wp_ajax_nopriv_add_register', 'add_register' );
+add_action( 'wp_ajax_add_register', 'add_register' );
