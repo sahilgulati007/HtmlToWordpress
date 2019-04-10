@@ -177,11 +177,13 @@ add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 
 
 function add_register(){
-    echo "hello";
+    //echo "hello";
     $e=$_POST['em'];
     $u=$_POST['unm'];
     $p=$_POST['pwd'];
+    wp_create_user( $u, $p, $e );
     $result['type']='success';
+    echo json_encode($result);
     wp_die();
 }
 add_action( 'wp_ajax_nopriv_add_register', 'add_register' );

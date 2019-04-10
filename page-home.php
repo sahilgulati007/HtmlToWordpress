@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: home
+Template Post Type: page
+*/
+?>
+<?php get_header('home'); ?>
     <div class="container text-center">
         <h1><img src="<?php echo get_template_directory_uri(); ?>/Images/icon-small.png" style="padding-right:10px;"><span>Welcome to </span>Snapmepix</h1>
         <?php
@@ -26,7 +32,6 @@
             endwhile;
         }
         ?>
-
 
     </div><!-- /.blog-main -->
 

@@ -1923,7 +1923,26 @@ nav ul li a:hover, nav ul li a.active
 @media (min-width : 1280px) and (max-width : 1400px)
 {
 }
+/* 10-4-19*/
+.lblcreated {
+    background-color: #14b55d;
+    color: #fff;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
 
+.fix-banner-home {
+  width: 100%;
+  min-height: 800px;
+  background: url(../Images/main-bg.jpg) no-repeat top;
+  position: relative;
+  background-size: cover;
+  padding-top: 100px;
+  margin-top: -150px;
+}
 
 
 /*@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900');*/

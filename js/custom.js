@@ -2,6 +2,7 @@ jQuery( document ).ready(function() {
     jQuery('.signin-block').css('display','none');
     jQuery('.signup-wrapper').css('display','none');
     jQuery('.fix-banner').css('display','none');
+    jQuery('.createMsg').css('display','none');
     jQuery('.signinclick').click(function () {
 
         jQuery('.signin-block').css('display','block');
@@ -22,7 +23,7 @@ jQuery( document ).ready(function() {
     });
 
     jQuery('.createbtn').click(function () {
-        alert(jQuery('#pwd').val());
+        // alert(jQuery('#pwd').val());
         var u=jQuery('#unm').val();
         var e=jQuery('#em').val();
         var p=jQuery('#pwd').val();
@@ -37,8 +38,14 @@ jQuery( document ).ready(function() {
             url : frontend_ajax_object.ajaxurl,
             data: d,
             success: function(response) {
-                alert(response);
-                alert('registered');
+                // alert(response);
+                // alert('registered');
+                jQuery('.createMsg').css('display','block');
+                setTimeout(
+                    function()
+                    {
+                        jQuery('.signup-wrapper').css('display','none');
+                    }, 5000);
             }
         })
 

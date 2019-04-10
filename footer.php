@@ -10,6 +10,7 @@
             <img src="<?php echo get_template_directory_uri(); ?>/Images/signupbg.jpg">
         </div>
         <div class="lblcreate">Create Account</div>
+        <div class="createMsg lblcreated"> Account Created </div>
         <div class="field">
 
 <!--            <form id="my-registration-form" method="post" action="--><?php //echo add_query_arg('do', 'register', get_permalink( $post->ID )); ?><!--">-->
