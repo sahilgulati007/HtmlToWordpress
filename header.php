@@ -48,6 +48,7 @@
                 <form role="search" method="get" id="searchform" class="searchform" action="<?php echo home_url( '/' ); ?>">
                 <div class="search-box"> <input type="text" name="s" id="s" class="search-txt-box" placeholder="<?php the_search_query(); ?>"><button type="submit" id="searchsubmit" value="Search" class="search-btn"><i class="fa fa-search"></i></button></div>
 <!--                <div class="search-box"> <input type="text" class="search-txt-box" placeholder="Search"><button type="submit" class="search-btn"><i class="fa fa-search"></i></button></div>-->
+                </form>
             </div>
         </div>
     </div>
