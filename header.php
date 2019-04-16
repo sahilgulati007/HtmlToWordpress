@@ -17,6 +17,7 @@
 <!--        <a href="Main.html" class="m-right btnsignin" >Sign in</a>-->
         <a class="m-right frd-link" href="http://localhost/wordpressfrmhtml/wp-login.php?action=lostpassword">Forgot Password?</a>
         <a class="signin-close"><i class="fa fa-close"></i></a>
+        </form>
     </div>
 </div>
 <body <?php body_class(); ?>>
@@ -39,8 +40,12 @@
                     ?>
                 </div>
                 <ul>
+                    <?php if(!is_user_logged_in()){ ?>
                     <li><i class="fa fa-user"></i><a class="signupclick" style="cursor: pointer" >Sign Up</a></li>
                     <li><i class="fa fa-sign-in"></i><a class="signinclick" style="cursor: pointer" >Sign In</a></li>
+                    <?php } else { ?>
+                    <li><i class="fa fa-sign-in"></i><a href="<?php echo wp_logout_url( get_home_url() ); ?>"  style="cursor: pointer" >Sign Out</a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -52,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="inner-bg"><span></span></div>
+    <div class="inner-bg"><span><img src="<?php echo( get_header_image() ); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" /></span></div>
 </header>
 
 <nav>

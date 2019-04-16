@@ -1,7 +1,7 @@
 <?php ?>
 <footer>
     <div class="container">
-        &copy; Snapmepix.com 2015  All rights are reserved
+        <?php if ( is_active_sidebar( 'footer-copyright-text' ) ) { dynamic_sidebar( 'footer-copyright-text' ); } ?>
     </div>
 </footer>
 <div class="signup-wrapper">

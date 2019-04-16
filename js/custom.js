@@ -1,7 +1,7 @@
 jQuery( document ).ready(function() {
     jQuery('.signin-block').css('display','none');
     jQuery('.signup-wrapper').css('display','none');
-    jQuery('.fix-banner').css('display','none');
+    //jQuery('.fix-banner').css('display','none');
     jQuery('.createMsg').css('display','none');
     jQuery('.signinclick').click(function () {
 
@@ -45,9 +45,10 @@ jQuery( document ).ready(function() {
                     function()
                     {
                         jQuery('.signup-wrapper').css('display','none');
-                    }, 5000);
+                    }, 3000);
             }
         })
 
     });
+
 });

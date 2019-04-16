@@ -19,6 +19,7 @@ function bootstrapstarter_enqueue_scripts() {
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
         )
     );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
@@ -38,43 +39,43 @@ add_action( 'init', 'bootstrapstarter_register_menu' );
 // adding footer and side bar
 function bootstrapstarter_widgets_init() {
 
-    register_sidebar( array(
-        'name'          => 'Footer - Area1',
-        'id'            => 'footer-area-1',
-        'before_widget' => '<div class="footer_copyright_text">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
+//    register_sidebar( array(
+//        'name'          => 'Footer - Area1',
+//        'id'            => 'footer-area-1',
+//        'before_widget' => '<div class="footer_copyright_text">',
+//        'after_widget'  => '</div>',
+//        'before_title'  => '<h4>',
+//        'after_title'   => '</h4>',
+//    ) );
 
-    register_sidebar( array(
-        'name'          => 'Footer - Area2',
-        'id'            => 'footer-area-2',
-        'before_widget' => '<div class="footer_copyright_text">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
-
-    register_sidebar( array(
-        'name'          => 'Footer - Area3',
-        'id'            => 'footer-area-3',
-        'before_widget' => '<div class="footer_copyright_text">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
-
-    register_sidebar( array(
-        'name'          => 'Footer - Area4',
-        'id'            => 'footer-area-4',
-        'before_widget' => '<div class="footer_copyright_text">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
-
-
+//    register_sidebar( array(
+//        'name'          => 'Footer - Area2',
+//        'id'            => 'footer-area-2',
+//        'before_widget' => '<div class="footer_copyright_text">',
+//        'after_widget'  => '</div>',
+//        'before_title'  => '<h4>',
+//        'after_title'   => '</h4>',
+//    ) );
+//
+//    register_sidebar( array(
+//        'name'          => 'Footer - Area3',
+//        'id'            => 'footer-area-3',
+//        'before_widget' => '<div class="footer_copyright_text">',
+//        'after_widget'  => '</div>',
+//        'before_title'  => '<h4>',
+//        'after_title'   => '</h4>',
+//    ) );
+//
+//    register_sidebar( array(
+//        'name'          => 'Footer - Area4',
+//        'id'            => 'footer-area-4',
+//        'before_widget' => '<div class="footer_copyright_text">',
+//        'after_widget'  => '</div>',
+//        'before_title'  => '<h4>',
+//        'after_title'   => '</h4>',
+//    ) );
+//
+//
     register_sidebar( array(
         'name'          => 'Footer - Copyright Text',
         'id'            => 'footer-copyright-text',
@@ -83,43 +84,29 @@ function bootstrapstarter_widgets_init() {
         'before_title'  => '<h4>',
         'after_title'   => '</h4>',
     ) );
-
-    register_sidebar( array(
-        'name'          => 'Sidebar - Inset',
-        'id'            => 'sidebar-1',
-        'before_widget' => '<div class="sidebar-module sidebar-module-inset">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
-
-    register_sidebar( array(
-        'name'          => 'Sidebar - Default',
-        'id'            => 'sidebar-2',
-        'before_widget' => '<div class="sidebar-module">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>',
-    ) );
+//
+//    register_sidebar( array(
+//        'name'          => 'Sidebar - Inset',
+//        'id'            => 'sidebar-1',
+//        'before_widget' => '<div class="sidebar-module sidebar-module-inset">',
+//        'after_widget'  => '</div>',
+//        'before_title'  => '<h4>',
+//        'after_title'   => '</h4>',
+//    ) );
+//
+//    register_sidebar( array(
+//        'name'          => 'Sidebar - Default',
+//        'id'            => 'sidebar-2',
+//        'before_widget' => '<div class="sidebar-module">',
+//        'after_widget'  => '</div>',
+//        'before_title'  => '<h4>',
+//        'after_title'   => '</h4>',
+//    ) );
 
 }
 add_action( 'widgets_init', 'bootstrapstarter_widgets_init' );
 
-//adding menu scripts to footer
-function mymenuscript() {
-    ?>
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
-    <?php
-}
-add_action( 'wp_footer', 'mymenuscript' );
 
 //adding logo
 add_theme_support( 'custom-logo' );
@@ -188,3 +175,59 @@ function add_register(){
 }
 add_action( 'wp_ajax_nopriv_add_register', 'add_register' );
 add_action( 'wp_ajax_add_register', 'add_register' );
+
+function custom_blockusers_init() {
+    if ( is_user_logged_in() && is_admin() && !current_user_can( 'administrator' ) ) {
+        wp_redirect( home_url()."/main/" );
+        exit;
+    }
+
+}
+add_action( 'init', 'custom_blockusers_init' );
+
+add_action('after_setup_theme', 'remove_admin_bar');
+
+function remove_admin_bar() {
+    if (!current_user_can('administrator') && !is_admin()) {
+        //show_admin_bar(false);
+    }
+    if (current_user_can('subscriber')) {
+        show_admin_bar(false);
+    }
+}
+
+add_action( 'template_redirect', 'redirect_to_specific_page' );
+
+function redirect_to_specific_page() {
+
+    if ( is_page([5,22,25,27]) && ! is_user_logged_in() ) {
+
+        wp_redirect( site_url(), 301 );
+        exit;
+    }
+
+}
+
+add_action( 'wp_footer', 'my_footer_scripts' );
+function my_footer_scripts(){
+    if ( is_user_logged_in()){
+        ?>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('.fix-banner').css('display','none');
+                jQuery('.inner-bg').css('display','block');
+            });
+        </script>
+        <?php
+    }
+    else{
+        ?>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('.fix-banner').css('display','block');
+                jQuery('.inner-bg').css('display','none');
+            });
+        </script>
+        <?php
+    }
+}

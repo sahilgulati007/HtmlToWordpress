@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6" style="text-align: center;">
                         <h2><?php the_title(); ?></h2>
-                        <p><?php the_content(); ?></p>
+                        <?php the_content(); ?>
                     </div>
                     <div class="col-md-3 col-sm-3">
                         <div class="content-img">
@@ -27,12 +27,6 @@
         }
         ?>
 
-<!--        <nav>-->
-<!--            <ul class="pager">-->
-<!--                <li>--><?php //next_posts_link('Previous'); ?><!--</li>-->
-<!--                <li>--><?php //previous_posts_link('Next'); ?><!--</li>-->
-<!--            </ul>-->
-<!--        </nav>-->
 
     </div><!-- /.blog-main -->
 
