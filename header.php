@@ -57,7 +57,8 @@
             </div>
         </div>
     </div>
-    <div class="inner-bg"><span><img src="<?php echo( get_header_image() ); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" /></span></div>
+    <div class="inner-bg"><span></span></div>
+<!--    <img src="--><?php //echo( get_header_image() ); ?><!--" alt="--><?php //echo( get_bloginfo( 'title' ) ); ?><!--" />-->
 </header>
 
 <nav>
